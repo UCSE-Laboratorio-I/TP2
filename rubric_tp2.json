@@ -1,0 +1,302 @@
+{
+  "tp_metadata": {
+    "tp_id": "LAB1-2026-TP2",
+    "title": "TP N° 2: Resolución de Problemas Mediante Búsqueda No Informada (Búsqueda a Ciegas)",
+    "catedra": "Laboratorio I - Tecnicatura Universitaria en Automatización y Robótica / Informática - UCSE DASS",
+    "docente": "Ing. Fabio D. Argañaraz",
+    "ciclo_lectivo": "2026",
+    "version": "1.0.0"
+  },
+  "security": {
+    "algorithm": "SHA-256 + Salted HMAC",
+    "protected": true
+  },
+  "max_score": 100,
+  "exercises": {
+    "ej1_formulacion_problema": {
+      "weight": 10,
+      "biblio": "Russell & Norvig Cap. 3.1; Diapositiva 4 a 15",
+      "feedback": "La formulación de problemas requiere definir con precisión el Estado Inicial, Acciones/Sucesores, Test Objetivo y Costo de Camino g(n).",
+      "hashes": {
+        "estado_inicial": {
+          "hash": "bbdd3f02e36e7e9fab5326deed5944cb9cca9f206eb23670234d66df400006aa",
+          "weight": 2.5,
+          "desc": "Localización inicial del agente en la red vial"
+        },
+        "acciones_sucesores": {
+          "hash": "6d352ea291adca1f009c1b7b4b3f1d78a37b5cc377406ed1bf8e792bada6baf8",
+          "weight": 2.5,
+          "desc": "Transición legal entre ciudades conectadas"
+        },
+        "test_objetivo": {
+          "hash": "a4ce5f6ba984f093861b8ea6bd73b21299e788de18d3044dcec3cf0ac86c14e4",
+          "weight": 2.5,
+          "desc": "Comprobar si el estado actual es la meta"
+        },
+        "costo_camino": {
+          "hash": "648f0f8b278284260ec0c848c61c8c411903ac199fd8f36165de35b63c6436a3",
+          "weight": 2.5,
+          "desc": "Función de costo que suma los kilómetros transitados"
+        }
+      }
+    },
+    "ej2_nodos_vs_estados": {
+      "weight": 10,
+      "biblio": "Russell & Norvig Cap. 3.3; Diapositivas 37, 42-43",
+      "feedback": "Un estado es una configuración física abstracta; un nodo es la estructura de datos conteniendo estado, padre, acción, costo g(n) y profundidad d.",
+      "hashes": {
+        "concepto_estado": {
+          "hash": "0af82e21dc85b398578871c3a7bea4e9ab0779f1e4f709155d509648e53f5eb0",
+          "weight": 2.5,
+          "desc": "Definición de estado"
+        },
+        "concepto_nodo": {
+          "hash": "8e556716fe7f9602c3d34098bf96764678b53fb490e692bd80202be261a61056",
+          "weight": 2.5,
+          "desc": "Definición de nodo"
+        },
+        "contiene_padre": {
+          "hash": "548a0bd4cd74a70068d79cb61d64e0b8482ab2f8e23261a366208cbbb606400b",
+          "weight": 2.5,
+          "desc": "Puntero al nodo generador"
+        },
+        "contiene_costo_g": {
+          "hash": "79dbc64f5d94ab15b2fee5805a7cd8f064d3c025c240e294709766affb65d2db",
+          "weight": 2.5,
+          "desc": "Costo acumulado de la trayectoria"
+        }
+      }
+    },
+    "ej3_espacios_estados_juguete": {
+      "weight": 10,
+      "biblio": "Russell & Norvig Cap. 3.2; Diapositivas 18 a 32",
+      "feedback": "La aspiradora tiene 8 estados; el 8-puzzle tiene 9!/2 = 181.440 estados alcanzables; las 8-reinas restringidas 8^8 = 16.777.216.",
+      "hashes": {
+        "aspiradora_total_estados": {
+          "hash": "4f0574384c4e45a13f3d6d228b24386094d736089cdb55e7b2e27448cd253ce1",
+          "weight": 2.5,
+          "desc": "2 ubicaciones x 2^2 suciedades = 8"
+        },
+        "puzzle8_total_permutaciones": {
+          "hash": "d6fda09d2d7f52e2a5b005543abdd1ee3f0411af20a327bb0d746bc796a2715f",
+          "weight": 2.5,
+          "desc": "Total de permutaciones 9!"
+        },
+        "puzzle8_estados_alcanzables": {
+          "hash": "6e3936ff372ad8810c4fe10a65011d7f460f4f448ede6de48193d50e870ae7e4",
+          "weight": 2.5,
+          "desc": "Estados alcanzables por paridad 9!/2"
+        },
+        "reinas8_espacio_restringido": {
+          "hash": "6eebe633947482f3cd8957656f4c3090804cc87a893459bddfc5a31db1e2689c",
+          "weight": 2.5,
+          "desc": "1 reina por columna: 8^8"
+        }
+      }
+    },
+    "ej4_busqueda_primero_anchura": {
+      "weight": 10,
+      "biblio": "Russell & Norvig Cap. 3.4.1; Diapositivas 48 a 51",
+      "feedback": "BFS usa cola FIFO, expande nivel por nivel, es completa (si b es finito), óptima si costos de paso constantes y consume memoria exponencial O(b^d).",
+      "hashes": {
+        "estructura_frontera": {
+          "hash": "c6b9be69f4a56b1c769f0b852d072245d2619cd0924b3d3aadf5ffbadae2ae1a",
+          "weight": 2.5,
+          "desc": "Estructura First-In First-Out"
+        },
+        "criterio_completitud": {
+          "hash": "1c9ac9a2f6ae3481455bd21a06b7185c8c2cbeed43a3bea45856ccd4cbc9406f",
+          "weight": 2.5,
+          "desc": "Completitud garantizada si b es finito"
+        },
+        "criterio_optimalidad": {
+          "hash": "495dd2220d581c3c924a2db09efb74ffa85e8c3826f6c66dacaf99a42461c19f",
+          "weight": 2.5,
+          "desc": "Óptimo si todos los pasos tienen igual costo"
+        },
+        "complejidad_espacial": {
+          "hash": "39e0b777b63ea2287b7f853eff0750eea721c6841c3f2857233e06e25a2339b3",
+          "weight": 2.5,
+          "desc": "Memoria O(b^d), su principal límite"
+        }
+      }
+    },
+    "ej5_busqueda_costo_uniforme": {
+      "weight": 10,
+      "biblio": "Russell & Norvig Cap. 3.4.2; Diapositivas 52 a 54",
+      "feedback": "UCS expande el nodo de menor g(n) mediante una cola de prioridad, evalúa el test objetivo AL EXTRAER y garantiza optimalidad si costo de paso >= eps > 0.",
+      "hashes": {
+        "estructura_frontera": {
+          "hash": "11f79b97b534545d49fd3151c5322db6b7f828009742ff86484caaa2923bfca4",
+          "weight": 2.5,
+          "desc": "Ordenada por g(n)"
+        },
+        "momento_test_objetivo": {
+          "hash": "3887652f1bb7cbe269af3a695c85ad9c2a1ab106cf9ae76ecea3e780281eb4c8",
+          "weight": 2.5,
+          "desc": "Se evalúa al extraer, NO al generar"
+        },
+        "condicion_optimalidad": {
+          "hash": "82415025bac00dac56b29130e13b9d9c16a8ea90d33b1bc5f6e54794a503edf0",
+          "weight": 2.5,
+          "desc": "Requiere costo de paso >= epsilon > 0"
+        },
+        "complejidad_tiempo_espacio": {
+          "hash": "a72fb9e703184440c622ddffc34928498ca855c505cb9919ccfb1c8b2c149101",
+          "weight": 2.5,
+          "desc": "O(b^(1 + floor(C*/eps)))"
+        }
+      }
+    },
+    "ej6_busqueda_primero_profundidad": {
+      "weight": 10,
+      "biblio": "Russell & Norvig Cap. 3.4.3; Diapositivas 55 a 58",
+      "feedback": "DFS usa pila LIFO, ventaja suprema de espacio lineal O(b*m), pero es incompleta en árboles con ciclos/ramas infinitas y no es óptima.",
+      "hashes": {
+        "estructura_frontera": {
+          "hash": "78d8f9c93d66c1c6af481d026c1c508e023c7e37a11286f53d8cf3fd48c80f0a",
+          "weight": 2.5,
+          "desc": "Estructura Last-In First-Out"
+        },
+        "ventaja_principal": {
+          "hash": "1d87d810553f91215974d711af0af39349dae3f364b7844b741cee6e7313f613",
+          "weight": 2.5,
+          "desc": "Requisitos de memoria lineal O(b*m)"
+        },
+        "desventaja_arboles": {
+          "hash": "cfc8cfd7b48334c3ed6a5cd2d03b74a385eca6fc185cc6f9b08e131b749f49a8",
+          "weight": 2.5,
+          "desc": "Pérdida en ramas infinitas o bucles"
+        },
+        "criterio_optimalidad": {
+          "hash": "038452d9ebfecaa6039b6fd9aeb81e7b43a4dccd4f196c6ff226840533dae3b0",
+          "weight": 2.5,
+          "desc": "No garantiza la solución más corta ni barata"
+        }
+      }
+    },
+    "ej7_profundidad_limitada_iterativa": {
+      "weight": 10,
+      "biblio": "Russell & Norvig Cap. 3.4.4 y 3.4.5; Diapositivas 59 a 64",
+      "feedback": "IDDFS ejecuta DLS con límites crecientes. Su sobrecarga de regeneración es mínima (~b/(b-1)) y combina memoria lineal de DFS con optimalidad de BFS.",
+      "hashes": {
+        "dls_limite_inadecuado": {
+          "hash": "366f8b51066badbdb67eab02190cea1ee1e6ec05d979a62accf574dddb83d1b0",
+          "weight": 2.5,
+          "desc": "DLS no halla solución si l < d"
+        },
+        "iddfs_estrategia": {
+          "hash": "f0c9143c4688e49b38e8f0ddbdc2521bcb1faa9ec12bc8306512212abdb32175",
+          "weight": 2.5,
+          "desc": "Itera el límite de profundidad l = 0, 1, 2..."
+        },
+        "iddfs_sobrecarga_nodos": {
+          "hash": "58422b5c05d36d17435960a9d50a329246401c9b2932af793e98f1b5fdc91c4f",
+          "weight": 2.5,
+          "desc": "La regeneración de niveles superiores es muy baja"
+        },
+        "iddfs_evaluacion_general": {
+          "hash": "f0184b7529cef7a9fb33805b93a710f93e520c94b6ef66b4bcaf9cce44715130",
+          "weight": 2.5,
+          "desc": "Estrategia ciega predilecta para espacios grandes"
+        }
+      }
+    },
+    "ej8_busqueda_bidireccional": {
+      "weight": 10,
+      "biblio": "Russell & Norvig Cap. 3.4.6; Diapositivas 65 a 75",
+      "feedback": "La búsqueda bidireccional corre hacia adelante y hacia atrás hasta intersectar fronteras, reduciendo el tiempo a O(b^(d/2)), pero requiere memoria O(b^(d/2)).",
+      "hashes": {
+        "mecanismo_operacion": {
+          "hash": "af9f7199b28100548868ed3d7d9f103181445e10ac8f3ba4081f986e44b1d347",
+          "weight": 2.5,
+          "desc": "Búsqueda frontal y reversa simultáneas"
+        },
+        "condicion_parada": {
+          "hash": "34729f387c9594a52dbc27606859ecf37a42c84bd39db74c4b44f79243666ad0",
+          "weight": 2.5,
+          "desc": "Se detiene al cruzarse las fronteras"
+        },
+        "reduccion_complejidad": {
+          "hash": "531a651ca4c78f17b7a3576beee1f905596f2c6e503e42b42421876fb294938a",
+          "weight": 2.5,
+          "desc": "Complejidad temporal O(b^(d/2))"
+        },
+        "desafio_principal": {
+          "hash": "030d749e59a0f14a69229ca24bc4788b5e28b1aa6209f7437244af8f13c4014a",
+          "weight": 2.5,
+          "desc": "Cálculo de inversas y retención de frontera"
+        }
+      }
+    },
+    "ej9_matriz_comparativa_estrategias": {
+      "weight": 10,
+      "biblio": "Russell & Norvig Cap. 3.4.7 Tabla 3.17; Diapositiva 76",
+      "feedback": "Matriz síntesis de Russell & Norvig: BFS (O(b^d) esp.), DFS (O(b*m) esp.), UCS (óptima siempre), IDDFS (óptima y O(b*d) esp.).",
+      "hashes": {
+        "bfs_completitud": {
+          "hash": "24ef2b5436ed2743b6a4c7466a8640cb1d9f0604927b2fbaa9a1826b080977fa",
+          "weight": 1.25,
+          "desc": "BFS Completa si b finito"
+        },
+        "bfs_tiempo": {
+          "hash": "a7efc80a87e3fb75c3068c4b80ff9b93503ea4adcf3a463772adcc4233415bb4",
+          "weight": 1.25,
+          "desc": "BFS Tiempo O(b^d)"
+        },
+        "bfs_espacio": {
+          "hash": "30a34c446bd29a9c9c9ec902453daa30774c8cd6eaf68d7db2b38790e97fc082",
+          "weight": 1.25,
+          "desc": "BFS Espacio O(b^d)"
+        },
+        "bfs_optimalidad": {
+          "hash": "b7f58722cb9e0bb01f0b4b3a6f975874776ebd7351bf2f62a673507c7070fb84",
+          "weight": 1.25,
+          "desc": "BFS Óptima si costos iguales"
+        },
+        "ucs_optimalidad": {
+          "hash": "c3b0fc8f5502e5c60dc033d27a0960802ea920e8f5d52ebb2948955ed6bd8ac7",
+          "weight": 1.25,
+          "desc": "UCS Óptima siempre"
+        },
+        "dfs_espacio": {
+          "hash": "55fdea2a0252039319fef8fd2714cfbf0a7193d607a1532b45a5276f33018c84",
+          "weight": 1.25,
+          "desc": "DFS Espacio O(b*m)"
+        },
+        "iddfs_espacio": {
+          "hash": "1012bcf94d9d1455e9076592e1e8f3bbbc113d18ad66e13fafe0c106b1c18e2a",
+          "weight": 1.25,
+          "desc": "IDDFS Espacio O(b*d)"
+        },
+        "iddfs_optimalidad": {
+          "hash": "dd362e62408b7d115c9c7d3099a0a5e6319b8a65896700f3fa1138418457fe29",
+          "weight": 1.25,
+          "desc": "IDDFS Óptima si costos iguales"
+        }
+      }
+    },
+    "ej10_prevencion_estados_repetidos": {
+      "weight": 10,
+      "biblio": "Russell & Norvig Cap. 3.5; Diapositivas 77 a 80",
+      "feedback": "Quienes olvidan su historia están condenados a repetirla. La búsqueda en grafos usa un explored set / lista cerrada para cortar ciclos, a costa de memoria.",
+      "hashes": {
+        "consecuencia_olvidar_historia": {
+          "hash": "1e732b50798fb4479681178b6215e57cc96936e4fdfdb7b9b2211e6133117448",
+          "weight": 3.5,
+          "desc": "Ramas infinitas y multiplicación exponencial"
+        },
+        "estructura_busqueda_grafos": {
+          "hash": "992f86615e40979f43ec2a13552e4ce9bc06e1191fdc28de61a754f2f06f9860",
+          "weight": 3.5,
+          "desc": "Conjunto de explorados (explored set)"
+        },
+        "costo_busqueda_grafos": {
+          "hash": "4fceaf0f436cb7569246badecfd6abf392088eec87811b9978dabe51adecfca1",
+          "weight": 3.0,
+          "desc": "Debe retener todos los estados en memoria"
+        }
+      }
+    }
+  }
+}

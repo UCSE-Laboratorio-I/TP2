@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TP N° 2: Búsqueda No Informada | Laboratorio I - UCSE DASS</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="bg-glow"></div>
+
+  <!-- Barra Superior Fija (Sticky Toolbar) -->
+  <header class="sticky-toolbar">
+    <div class="toolbar-content">
+      <div class="toolbar-brand">
+        <span class="brand-badge">UCSE DASS</span>
+        <span class="brand-title">Laboratorio I &bull; TP N° 2</span>
+      </div>
+
+      <div class="progress-container">
+        <div class="progress-info">
+          <span class="progress-label">Progreso de la Guía:</span>
+          <span id="progress-percentage" class="progress-value">0%</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div id="progress-bar-fill" class="progress-bar-fill" style="width: 0%;"></div>
+        </div>
+        <span id="progress-count" class="progress-count">0 de 43 completados</span>
+      </div>
+
+      <div class="toolbar-actions">
+        <button id="theme-toggle-btn" class="btn btn-secondary btn-icon" title="Cambiar Tema (Oscuro / Claro)">
+          🌓
+        </button>
+        <button id="btn-export-json" class="btn btn-primary" title="Exportar archivo de respuestas JSON">
+          💾 Exportar Respuestas (.json)
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-container">
+
+    <!-- Encabezado Institucional -->
+    <section class="hero-card">
+      <div class="hero-header">
+        <div class="institution-meta">
+          <span class="institution-name">Universidad Católica de Santiago del Estero &bull; DASS</span>
+          <span class="course-name">Tecnicatura Universitaria en Automatización y Robótica / Informática</span>
+        </div>
+        <span class="year-badge">Ciclo Lectivo 2026</span>
+      </div>
+
+      <h1 class="hero-title">Trabajo Práctico N° 2: Resolución de Problemas Mediante Búsqueda No Informada</h1>
+      <p class="hero-subtitle">
+        Cátedra de <strong>Laboratorio I</strong> &bull; Docente / JTP: <strong>Ing. Fabio D. Argañaraz</strong>
+      </p>
+
+      <div class="academic-notice">
+        <p>
+          🎯 <strong>Modalidad:</strong> Individual y autoevaluativa. Completa cada consigna seleccionando las opciones correctas.
+          Al finalizar, descarga tu archivo <code>respuestas_tp2.json</code> y verifica tu puntaje ejecutando <code>python autograder_tp2.py respuestas_tp2.json</code>.
+        </p>
+      </div>
+
+      <!-- Datos del Estudiante -->
+      <div class="student-form-grid">
+        <div class="form-group">
+          <label for="student-name">Apellido y Nombre:</label>
+          <input type="text" id="student-name" placeholder="Ej: Pérez, Juan" autocomplete="name">
+        </div>
+        <div class="form-group">
+          <label for="student-dni">DNI / Matrícula:</label>
+          <input type="text" id="student-dni" placeholder="Ej: 42123456" autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label for="student-email">Correo Institucional:</label>
+          <input type="email" id="student-email" placeholder="alumno@ucse.edu.ar" autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label for="student-comision">Comisión / Turno:</label>
+          <input type="text" id="student-comision" placeholder="Ej: Turno Tarde" autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label for="student-github">Usuario de GitHub:</label>
+          <input type="text" id="student-github" placeholder="Ej: juanperez" autocomplete="username">
+        </div>
+      </div>
+    </section>
+
+    <!-- GUÍA DE EJERCICIOS (1 A 10) -->
+
+    <!-- Ejercicio 1 -->
+    <article class="exercise-card" id="ej1">
+      <div class="exercise-header">
+        <span class="exercise-badge">Ejercicio 1</span>
+        <h2 class="exercise-title">Formulación Formal de un Problema de Búsqueda</h2>
+        <span class="exercise-points">10 Puntos</span>
+      </div>
+
+      <p class="exercise-description">
+        Según Russell &amp; Norvig y las diapositivas de cátedra, un problema de búsqueda se formaliza mediante 4 componentes esenciales.
+        En el caso de estudio clásico de conducir un agente desde la ciudad de <strong>Arad</strong> hasta <strong>Bucarest</strong> en Rumania, asocia cada componente formal con su definición exacta:
+      </p>
+
+      <div class="matching-grid">
+        <div class="matching-row">
+          <div class="matching-label">
+            <strong>1. Estado Inicial ($S_0$):</strong>
+            <span class="matching-sub">Punto de partida formal del agente en el espacio de estados.</span>
+          </div>
+          <div class="matching-control">
+            <select data-ex="ej1_formulacion_problema" data-key="estado_inicial">
+              <option value="" disabled selected>-- Selecciona la especificación --</option>
+              <option value="en_bucarest">En(Bucarest) - Ciudad capital designada como destino</option>
+              <option value="en_arad">En(Arad) - Localización del agente al inicio del proceso</option>
+              <option value="red_carreteras">Grafo completo de todas las carreteras de Rumania</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="matching-row">
+          <div class="matching-label">
+            <strong>2. Acciones / Función Sucesor:</strong>
+            <span class="matching-sub">Conjunto de operadores legales aplicables a cada estado $s$.</span>
+          </div>
+          <div class="matching-control">
+            <select data-ex="ej1_formulacion_problema" data-key="acciones_sucesores">
+              <option value="" disabled selected>-- Selecciona la especificación --</option>
+              <option value="ir_cualquier_ciudad">Teletransportarse a cualquier ciudad del país sin importar conexiones</option>
+              <option value="quedarse_estatico">Permanecer en Arad indefinidamente consumiendo combustible</option>
+              <option value="ir_adyacente">Ir(Ciudad_Adyacente) - Transición legal entre ciudades conectadas</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="matching-row">
+          <div class="matching-label">
+            <strong>3. Test Objetivo:</strong>
+            <span class="matching-sub">Mecanismo que determina si un estado dado es una meta válida.</span>
+          </div>
+          <div class="matching-control">
+            <select data-ex="ej1_formulacion_problema" data-key="test_objetivo">
+              <option value="" disabled selected>-- Selecciona la especificación --</option>
+              <option value="camino_mas_corto">Verificar si el camino recorrido tiene más de 3 ciudades</option>
+              <option value="en_bucarest">Estado == En(Bucarest) - Verificación de destino alcanzado</option>
+              <option value="combustible_restante">Comprobar que el depósito de gasolina no esté vacío</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="matching-row">
+          <div class="matching-label">
+            <strong>4. Costo del Camino ($g$):</strong>
+            <span class="matching-sub">Función que asigna un costo numérico a la trayectoria transitada.</span>
+          </div>
+          <div class="matching-control">
+            <select data-ex="ej1_formulacion_problema" data-key="costo_camino">
+              <option value="" disabled selected>-- Selecciona la especificación --</option>
+              <option value="cantidad_pasos">Conteo simple de giros a la izquierda en las intersecciones</option>
+              <option value="suma_distancias">Suma de distancias en kilómetros de los arcos transitados (g)</option>
+              <option value="peaje_aleatorio">Asignación de un valor constante arbitrario por cada segundo</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <details class="biblio-hint">
+        <summary>📖 Dónde estudiar este tema en la bibliografía</summary>
+        <div class="biblio-content">
+          <strong>Russell &amp; Norvig (Cap. 3.1 pp. 64-69):</strong> "Problemas y soluciones bien definidas". Formulación de objetivos y los 4 componentes formales de un problema.<br>
+          <strong>Presentación Clase 3.2:</strong> Diapositivas 4 a 15 ("Formulación del objetivo, del problema y componentes formales").
+        </div>
+      </details>
+    </article>
+
+    <!-- Ejercicio 2 -->
+    <article class="exercise-card" id="ej2">
+      <div class="exercise-header">
+        <span class="exercise-badge">Ejercicio 2</span>
+        <h2 class="exercise-title">Nodos de Búsqueda vs. Estados del Mundo</h2>
+        <span class="exercise-points">10 Puntos</span>
+      </div>
+
+      <p class="exercise-description">
+        Uno de los errores conceptuales más frecuentes en IA es confundir un <strong>Estado del Mundo</strong> con un <strong>Nodo del Árbol de Búsqueda</strong>. Clasifica con precisión cada definición y propiedad estructural:
+      </p>
+
+      <div class="matching-grid">
+        <div class="matching-row">
+          <div class="matching-label">
+            <strong>1. ¿Qué es formalmente un ESTADO?</strong>
+            <span class="matching-sub">Definición ontológica en el espacio del problema.</span>
+          </div>
+          <div class="matching-control">
+            <select data-ex="ej2_nodos_vs_estados" data-key="concepto_estado">
+              <option value="" disabled selected>-- Selecciona definición --</option>
+              <option value="estructura_busqueda">Una estructura de datos en memoria con punteros a padre e hijos</option>
+              <option value="configuracion_mundo">Una representación abstracta de la configuración física del entorno</option>
+              <option value="algoritmo_exploracion">El procedimiento de código que recorre las opciones</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="matching-row">
+          <div class="matching-label">
+            <strong>2. ¿Qué es formalmente un NODO DE BÚSQUEDA?</strong>
+            <span class="matching-sub">Estructura utilizada por el algoritmo para construir el árbol.</span>
+          </div>
+          <div class="matching-control">
+            <select data-ex="ej2_nodos_vs_estados" data-key="concepto_nodo">
+              <option value="" disabled selected>-- Selecciona definición --</option>
+              <option value="configuracion_mundo">La posición física de un robot en coordenadas cartesianas</option>
+              <option value="hardware_sensor">Un sensor electrónico que captura señales del ambiente</option>
+              <option value="estructura_busqueda">Estructura de datos que contiene estado, padre, acción, costo g(n) y profundidad d</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="matching-row">
+          <div class="matching-label">
+            <strong>3. Puntero al Padre (Parent):</strong>
+            <span class="matching-sub">¿A cuál de los dos conceptos pertenece el puntero que permite reconstruir la solución?</span>
+          </div>
+          <div class="matching-control">
+            <select data-ex="ej2_nodos_vs_estados" data-key="contiene_padre">
+              <option value="" disabled selected>-- Selecciona a qué pertenece --</option>
+              <option value="propiedad_estado">Pertenece al Estado físico del mundo</option>
+              <option value="propiedad_nodo">Pertenece al Nodo de búsqueda (estructura interna)</option>
+              <option value="propiedad_ninguno">A ninguno de los dos, se guarda en el test objetivo</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="matching-row">
+          <div class="matching-label">
+            <strong>4. Costo Acumulado del Camino ($g(n)$):</strong>
+            <span class="matching-sub">¿Quién almacena la suma de costos desde la raíz hasta el punto actual?</span>
+          </div>
+          <div class="matching-control">
+            <select data-ex="ej2_nodos_vs_estados" data-key="contiene_costo_g">
+              <option value="" disabled selected>-- Selecciona a qué pertenece --</option>
+              <option value="propiedad_estado">Pertenece al Estado físico del mundo</option>
+              <option value="propiedad_nodo">Pertenece al Nodo de búsqueda (estructura interna)</option>
+              <option value="propiedad_ninguno">A ninguno de los dos, solo se calcula al terminar</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <details class="biblio-hint">
+        <summary>📖 Dónde estudiar este tema en la bibliografía</summary>
+        <div class="biblio-content">
+          <strong>Russell &amp; Norvig (Cap. 3.3 pp. 74-76):</strong> "Nodos y estados". Diferencia crucial: dos nodos distintos pueden corresponder al mismo estado del mundo si se alcanzan por caminos diferentes.<br>
+          <strong>Presentación Clase 3.2:</strong> Diapositivas 37, 42 y 43 ("Representación de un nodo").
+        </div>
+      </details>
+    </article>
+
+    <!-- Ejercicio 3 -->
+    <article class="exercise-card" id="ej3">
+      <div class="exercise-header">
+        <span class="exercise-badge">Ejercicio 3</span>
+        <h2 class="exercise-title">Espacios de Estados en Problemas de Juguete</h2>
+        <span class="exercise-points">10 Puntos</span>
+      </div>
+
+      <p class="exercise-description">
+        En la formulación de problemas de juguete (toy problems), el cálculo exacto del tamaño del espacio de estados es fundamental para dimensionar la complejidad computacional. Resuelve los siguientes cálculos canónicos:
+      </p>
+
+      <div class="matching-grid">
+        <div class="matching-row">
+          <div class="matching-label">
+            <strong>1. Mundo de la Aspiradora (2 habitaciones):</strong>
+            <span class="matching-sub">¿Cuántos estados discretos componen el espacio de estados total (agente en A/B, cuartos limpios/sucios)?</span>
+          </div>
+          <div class="matching-control">
+            <select data-ex="ej3_espacios_estados_juguete" data-key="aspiradora_total_estados">
+              <option value="" disabled selected>-- Selecciona cantidad de estados --</option>
+              <option value="4_estados">4 estados discretos</option>
+              <option value="8_estados">8 estados discretos (2 posiciones &times; 2&sup2; combinaciones de suciedad)</option>
+              <option value="16_estados">16 estados discretos</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="matching-row">
+          <div class="matching-label">
+            <strong>2. 8-Puzzle (Permutaciones Totales del Tablero $3 \times 3$):</strong>
+            <span class="matching-sub">¿Cuántas combinaciones matemáticas puras existen para las 8 fichas y el espacio vacío?</span>
+          </div>
+          <div class="matching-control">
+            <select data-ex="ej3_espacios_estados_juguete" data-key="puzzle8_total_permutaciones">
+              <option value="" disabled selected>-- Selecciona permutaciones --</option>
+              <option value="40320_permutaciones">8! = 40.320 permutaciones</option>
+              <option value="1000000_permutaciones">1.000.000 de combinaciones arbitrarias</option>
+              <option value="362880_permutaciones">9! = 362.880 permutaciones posibles del tablero</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="matching-row">
+          <div class="matching-label">
+            <strong>3. 8-Puzzle (Estados Realmente Alcanzables):</strong>
+            <span class="matching-sub">Debido a la invariante de paridad de inversiones, ¿cuántos estados son resolubles desde un estado inicial dado?</span>
+          </div>
+          <div class="matching-control">
+            <select data-ex="ej3_espacios_estados_juguete" data-key="puzzle8_estados_alcanzables">
+              <option value="" disabled selected>-- Selecciona estados alcanzables --</option>
+              <option value="362880_alcanzables">Todos los 362.880 estados son mutuamente alcanzables</option>
+              <option value="181440_alcanzables">La mitad: 9! / 2 = 181.440 estados alcanzables</option>
+              <option value="90720_alcanzables">Un cuarto: 9! / 4 = 90.720 estados alcanzables</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="matching-row">
+          <div class="matching-label">
+            <strong>4. Problema de las 8-Reinas (Formulación Restringida):</strong>
+            <span class="matching-sub">Si se restringe la colocación a exactamente 1 reina por columna, ¿cuál es el tamaño del espacio?</span>
+          </div>
+          <div class="matching-control">
+            <select data-ex="ej3_espacios_estados_juguete" data-key="reinas8_espacio_restringido">
+              <option value="" disabled selected>-- Selecciona tamaño del espacio --</option>
+              <option value="64_estados">64 estados posibles</option>
+              <option value="4400000000_estados">Aprox. 4,4 &times; 10&sup9; estados (sin restricción de columna)</option>
+              <option value="16777216_estados">8&sup8; = 16.777.216 estados (1 reina por columna en fila 1 a 8)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <details class="biblio-hint">
+        <summary>📖 Dónde estudiar este tema en la bibliografía</summary>
+        <div class="biblio-content">
+          <strong>Russell &amp; Norvig (Cap. 3.2 pp. 69-74):</strong> "Ejemplos de problemas". Análisis combinatorio de la aspiradora, 8-puzzle y 8-reinas.<br>
+          <strong>Presentación Clase 3.2:</strong> Diapositivas 18 a 32 ("El Problema del Juguete, 8-puzzle y 8-reinas").
+        </div>
+      </details>
+    </article>
+
+    <!-- Ejercicio 4 -->
+    <article class="exercise-card" id="ej4">
+      <div class="exercise-header">
+        <span class="exercise-badge">Ejercicio 4</span>
+        <h2 class="exercise-title">Búsqueda Primero en Anchura (BFS - Breadth-First Search)</h2>
+        <span class="exercise-points">10 Puntos</span>
+      </div>
+
+      <p class="exercise-description">
+        La búsqueda primero en anchura expande siempre el nodo más superficial en la frontera. Determina las propiedades teóricas y límites operacionales de BFS:
+      </p>
+
+      <div class="matching-grid">
+        <div class="matching-row">
+          <div class="matching-label">
+            <strong>1. Estructura de Datos de la Frontera:</strong>
+            <span class="matching-sub">¿Qué estructura gestiona la colección de nodos generados pendientes de expandir?</span>
+          </div>
+          <div class="matching-control">
+            <select data-ex="ej4_busqueda_primero_anchura" data-key="estructura_frontera">
+              <option value="" disabled selected>-- Selecciona estructura --</option>
+              <option value="pila_lifo">Pila LIFO (Last-In, First-Out)</option>
+              <option value="cola_fifo">Cola FIFO (First-In, First-Out)</option>
+              <option value="arbol_b">Árbol B balanceado</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="matching-row">
+          <div class="matching-label">
+            <strong>2. Criterio de Completitud:</strong>
+            <span class="matching-sub">¿Bajo qué condición garantiza BFS encontrar una solución si existe?</span>
+          </div>
+          <div class="matching-control">
+            <select data-ex="ej4_busqueda_primero_anchura" data-key="criterio_completitud">
+              <option value="" disabled selected>-- Selecciona condición --</option>
+              <option value="solo_en_grafos_aciclicos">Completa únicamente si el grafo no tiene bifurcaciones</option>
+              <option value="incompleta_siempre">Incompleta, puede caer en bucles cerrados</option>
+              <option value="completo_si_b_finito">Completo si el factor de ramificación b es finito</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="matching-row">
+          <div class="matching-label">
+            <strong>3. Criterio de Optimalidad:</strong>
+            <span class="matching-sub">¿Cuándo devuelve BFS la solución de costo mínimo?</span>
+          </div>
+          <div class="matching-control">
+            <select data-ex="ej4_busqueda_primero_anchura" data-key="criterio_optimalidad">
+              <option value="" disabled selected>-- Selecciona condición --</option>
+              <option value="siempre_optima_cualquier_costo">Óptima siempre, independientemente de los costos de los arcos</option>
+              <option value="optimo_costo_uniforme_paso">Óptimo si todos los costos de paso son idénticos (costo constante c &gt; 0)</option>
+              <option value="nunca_optima">Nunca es óptima</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="matching-row">
+          <div class="matching-label">
+            <strong>4. Complejidad Espacial (Memoria):</strong>
+            <span class="matching-sub">¿Cuál es la función asintótica de consumo de memoria en términos de $b$ y $d$?</span>
+          </div>
+          <div class="matching-control">
+            <select data-ex="ej4_busqueda_primero_anchura" data-key="complejidad_espacial">
+              <option value="" disabled selected>-- Selecciona complejidad --</option>
+              <option value="o_b_por_d">O(b &middot; d) - Espacio lineal</option>
+              <option value="o_1">O(1) - Espacio constante</option>
+              <option value="o_b_a_la_d">O(bᵈ) - Espacio exponencial (debe retener todos los nodos en la frontera)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <details class="biblio-hint">
+        <summary>📖 Dónde estudiar este tema en la bibliografía</summary>
+        <div class="biblio-content">
+          <strong>Russell &amp; Norvig (Cap. 3.4.1 pp. 79-82):</strong> "Búsqueda primero en anchura". Cola FIFO, análisis de completitud, optimalidad y el cuello de botella de la memoria exponencial.<br>
+          <strong>Presentación Clase 3.2:</strong> Diapositivas 48 a 51 ("1. Búsqueda primero en anchura y su costo").
+        </div>
+      </details>
+    </article>
+
+    <!-- Ejercicio 5 -->
+    <article class="exercise-card" id="ej5">
+      <div class="exercise-header">
+        <span class="exercise-badge">Ejercicio 5</span>
+        <h2 class="exercise-title">Búsqueda de Costo Uniforme (UCS / Algoritmo de Dijkstra)</h2>
+        <span class="exercise-points">10 Puntos</span>
+      </div>
+
+      <p class="exercise-description">
+        En lugar de expandir el nodo más superficial, la búsqueda de costo uniforme expande el nodo con el costo de camino acumulado $g(n)$ más bajo. Responde a las directivas críticas de su implementación:
+      </p>
+
+      <div class="matching-grid">
+        <div class="matching-row">
+          <div class="matching-label">
+            <strong>1. Estructura de Datos de la Frontera:</strong>
+            <span class="matching-sub">¿Cómo se gestiona el orden de extracción de los nodos en UCS?</span>
+          </div>
+          <div class="matching-control">
+            <select data-ex="ej5_busqueda_costo_uniforme" data-key="estructura_frontera">
+              <option value="" disabled selected>-- Selecciona estructura --</option>
+              <option value="cola_fifo">Cola FIFO simple</option>
+              <option value="pila_lifo">Pila LIFO</option>
+              <option value="cola_prioridad_costo_g">Cola de prioridad ordenada por el costo acumulado g(n)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="matching-row">
+          <div class="matching-label">
+            <strong>2. Momento de Aplicación del Test Objetivo:</strong>
+            <span class="matching-sub">¿Cuándo se debe verificar formalmente si un nodo es meta para garantizar optimalidad?</span>
+          </div>
+          <div class="matching-control">
+            <select data-ex="ej5_busqueda_costo_uniforme" data-key="momento_test_objetivo">
+              <option value="" disabled selected>-- Selecciona momento exacto --</option>
+              <option value="al_generar_nodo">Al GENERAR el nodo hijo (para ahorrar expansiones)</option>
+              <option value="al_extraer_de_frontera">Al EXTRAER el nodo de la frontera para expandirlo</option>
+              <option value="al_inicio_del_algoritmo">Antes de iniciar la búsqueda</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="matching-row">
+          <div class="matching-label">
+            <strong>3. Condición de Optimalidad:</strong>
+            <span class="matching-sub">¿Qué restricción matemática deben satisfacer los costos de paso de los arcos?</span>
+          </div>
+          <div class="matching-control">
+            <select data-ex="ej5_busqueda_costo_uniforme" data-key="condicion_optimalidad">
+              <option value="" disabled selected>-- Selecciona restricción --</option>
+              <option value="heuristica_admisible">Debe contar con una función heurística consistente</option>
+              <option value="costo_paso_mayor_cero">Cada costo de paso debe ser estrictamente positivo (c &ge; &epsilon; &gt; 0)</option>
+              <option value="grafo_sin_ciclos">El grafo no puede tener ningún ciclo</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="matching-row">
+          <div class="matching-label">
+            <strong>4. Complejidad Asintótica Guiada por Costo:</strong>
+            <span class="matching-sub">¿Cuál es la fórmula de complejidad temporal/espacial en función del costo óptimo $C^*$ y &epsilon;?</span>
+          </div>
+          <div class="matching-control">
+            <select data-ex="ej5_busqueda_costo_uniforme" data-key="complejidad_tiempo_espacio">
+              <option value="" disabled selected>-- Selecciona complejidad --</option>
+              <option value="o_b_a_la_d">O(bᵈ) guiada únicamente por la profundidad d</option>
+              <option value="o_b_por_m">O(b &middot; m) espacio lineal</option>
+              <option value="o_b_exponente_costo_optimo">O(b^(1 + &lfloor;C*/&epsilon;&rfloor)) guiada por el costo óptimo C*</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <details class="biblio-hint">
+        <summary>📖 Dónde estudiar este tema en la bibliografía</summary>
+        <div class="biblio-content">
+          <strong>Russell &amp; Norvig (Cap. 3.4.2 pp. 82-84):</strong> "Búsqueda de costo uniforme". Cola de prioridad, evaluación de meta al extraer y por qué fallaría si se evaluara al generar.<br>
+          <strong>Presentación Clase 3.2:</strong> Diapositivas 52 a 54 ("2. Búsqueda de costo uniforme").
+        </div>
+      </details>
+    </article>
+
+    <!-- Ejercicio 6 -->
+    <article class="exercise-card" id="ej6">
+      <div class="exercise-header">
+        <span class="exercise-badge">Ejercicio 6</span>
+        <h2 class="exercise-title">Búsqueda Primero en Profundidad (DFS - Depth-First Search)</h2>
+        <span class="exercise-points">10 Puntos</span>
+      </div>
+
+      <p class="exercise-description">
+        La búsqueda primero en profundidad desciende de inmediato al nivel más profundo del árbol de búsqueda antes de retroceder. Analiza sus fortalezas y vulnerabilidades críticas:
+      </p>
+
+      <div class="matching-grid">
+        <div class="matching-row">
+          <div class="matching-label">
+            <strong>1. Estructura de Datos de la Frontera:</strong>
+            <span class="matching-sub">¿Qué estructura de control implementa el comportamiento de profundización?</span>
+          </div>
+          <div class="matching-control">
+            <select data-ex="ej6_busqueda_primero_profundidad" data-key="estructura_frontera">
+              <option value="" disabled selected>-- Selecciona estructura --</option>
+              <option value="cola_fifo">Cola FIFO</option>
+              <option value="tabla_hash">Tabla Hash no ordenada</option>
+              <option value="pila_lifo">Pila LIFO (Last-In, First-Out) o recursión de llamada</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="matching-row">
+          <div class="matching-label">
+            <strong>2. Ventaja Principal de DFS:</strong>
+            <span class="matching-sub">¿Por qué sigue siendo ampliamente estudiada y utilizada en IA?</span>
+          </div>
+          <div class="matching-control">
+            <select data-ex="ej6_busqueda_primero_profundidad" data-key="ventaja_principal">
+              <option value="" disabled selected>-- Selecciona ventaja --</option>
+              <option value="optimalidad_garantizada">Garantiza encontrar siempre el camino óptimo</option>
+              <option value="memoria_lineal_o_b_m">Requisitos de memoria extremadamente modestos: espacio lineal O(b &middot; m)</option>
+              <option value="tiempo_minimo">Tiempo de ejecución independiente de la profundidad</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="matching-row">
+          <div class="matching-label">
+            <strong>3. Desventaja Crítica en Búsqueda en Árboles:</strong>
+            <span class="matching-sub">¿Qué fallo fatal puede ocurrir en espacios de estados con ciclos o profundidad infinita?</span>
+          </div>
+          <div class="matching-control">
+            <select data-ex="ej6_busqueda_primero_profundidad" data-key="desventaja_arboles">
+              <option value="" disabled selected>-- Selecciona fallo --</option>
+              <option value="memoria_excesiva">Desborda la memoria RAM en el primer nivel</option>
+              <option value="incompleto_ramas_infinitas">Incompleto: puede descender indefinidamente por una rama infinita o ciclo</option>
+              <option value="incompatible_con_grafos">No es aplicable a grafos dirigidos</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="matching-row">
+          <div class="matching-label">
+            <strong>4. Evaluación de Optimalidad:</strong>
+            <span class="matching-sub">¿Garantiza DFS encontrar el camino de menor costo?</span>
+          </div>
+          <div class="matching-control">
+            <select data-ex="ej6_busqueda_primero_profundidad" data-key="criterio_optimalidad">
+              <option value="" disabled selected>-- Selecciona evaluación --</option>
+              <option value="siempre_optimo">Sí, siempre óptimo</option>
+              <option value="optimo_si_costos_iguales">Óptimo únicamente si los costos valen 1</option>
+              <option value="no_optimo">No óptimo: puede devolver una solución profunda muy costosa existiendo una superficial</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <details class="biblio-hint">
+        <summary>📖 Dónde estudiar este tema en la bibliografía</summary>
+        <div class="biblio-content">
+          <strong>Russell &amp; Norvig (Cap. 3.4.3 pp. 84-87):</strong> "Búsqueda primero en profundidad". Pila LIFO, complejidad espacial lineal $O(bm)$, incompletitud y falta de optimalidad.<br>
+          <strong>Presentación Clase 3.2:</strong> Diapositivas 55 a 58 ("3. Búsqueda primero en profundidad y su inconveniente").
+        </div>
+      </details>
+    </article>
+
+    <!-- Ejercicio 7 -->
+    <article class="exercise-card" id="ej7">
+      <div class="exercise-header">
+        <span class="exercise-badge">Ejercicio 7</span>
+        <h2 class="exercise-title">Profundidad Limitada (DLS) e Iterativa (IDDFS)</h2>
+        <span class="exercise-points">10 Puntos</span>
+      </div>
+
+      <p class="exercise-description">
+        Para mitigar las ramas infinitas de DFS, se introduce la Búsqueda con Profundidad Limitada (DLS) y su extensión maestra, la Búsqueda Primero en Profundidad Iterativa (IDDFS). Resuelve sus aspectos formales:
+      </p>
+
+      <div class="matching-grid">
+        <div class="matching-row">
+          <div class="matching-label">
+            <strong>1. Vulnerabilidad de DLS con Límite Inadecuado:</strong>
+            <span class="matching-sub">¿Qué ocurre si fijamos un límite $l$ estrictamente menor que la profundidad $d$ de la solución más superficial ($l < d$)?</span>
+          </div>
+          <div class="matching-control">
+            <select data-ex="ej7_profundidad_limitada_iterativa" data-key="dls_limite_inadecuado">
+              <option value="" disabled selected>-- Selecciona consecuencia --</option>
+              <option value="encuentra_solucion_igual">Encuentra la solución pero con sobrecosto temporal</option>
+              <option value="cae_en_bucle_infinito">Cae en un bucle infinito en el límite</option>
+              <option value="incompleto_si_l_menor_d">Incompleto: la búsqueda termina con fracaso sin hallar la solución</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="matching-row">
+          <div class="matching-label">
+            <strong>2. Estrategia Operativa de IDDFS:</strong>
+            <span class="matching-sub">¿Cómo sortea IDDFS el problema de no conocer a priori el diámetro del grafo?</span>
+          </div>
+          <div class="matching-control">
+            <select data-ex="ej7_profundidad_limitada_iterativa" data-key="iddfs_estrategia">
+              <option value="" disabled selected>-- Selecciona estrategia --</option>
+              <option value="reduce_limite_progresivamente">Empieza en l = &infin; y va decrementando</option>
+              <option value="elige_limites_aleatorios">Prueba valores aleatorios mediante búsqueda estocástica</option>
+              <option value="incrementa_limite_progresivamente">Incrementa el límite progresivamente (l = 0, 1, 2, ...)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="matching-row">
+          <div class="matching-label">
+            <strong>3. Análisis de Sobrecarga por Regeneración de Nodos:</strong>
+            <span class="matching-sub">A primera vista, re-generar los niveles superiores parece ineficiente. ¿Qué demuestra el análisis formal de Russell &amp; Norvig?</span>
+          </div>
+          <div class="matching-control">
+            <select data-ex="ej7_profundidad_limitada_iterativa" data-key="iddfs_sobrecarga_nodos">
+              <option value="" disabled selected>-- Selecciona análisis --</option>
+              <option value="sobrecarga_catastrofica">Es una sobrecarga catastrófica que triplica el tiempo de BFS</option>
+              <option value="sin_sobrecarga">No existe ninguna sobrecarga porque se guardan en disco</option>
+              <option value="sobrecarga_despreciable">Sobrecarga despreciable (~b/(b-1)): la vasta mayoría de nodos reside en el nivel inferior</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="matching-row">
+          <div class="matching-label">
+            <strong>4. Evaluación General de IDDFS:</strong>
+            <span class="matching-sub">¿Por qué es considerada la estrategia predilecta de búsqueda no informada en espacios de gran escala?</span>
+          </div>
+          <div class="matching-control">
+            <select data-ex="ej7_profundidad_limitada_iterativa" data-key="iddfs_evaluacion_general">
+              <option value="" disabled selected>-- Selecciona evaluación --</option>
+              <option value="algoritmo_obsoleto">Es un algoritmo obsoleto reemplazado por DFS puro</option>
+              <option value="inutilizable_en_ia">Solo se aplica en administración de memoria virtual</option>
+              <option value="metodo_ciego_preferido">Método ciego preferido: combina el espacio lineal de DFS con la completitud y optimalidad de BFS</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <details class="biblio-hint">
+        <summary>📖 Dónde estudiar este tema en la bibliografía</summary>
+        <div class="biblio-content">
+          <strong>Russell &amp; Norvig (Cap. 3.4.4 y 3.4.5 pp. 87-90):</strong> "Búsqueda primero en profundidad iterativa". Comparación de nodos generados en BFS vs. IDDFS y su eficiencia asintótica.<br>
+          <strong>Presentación Clase 3.2:</strong> Diapositivas 59 a 64 ("4. Búsqueda primero en profundidad iterativa").
+        </div>
+      </details>
+    </article>
+
+    <!-- Ejercicio 8 -->
+    <article class="exercise-card" id="ej8">
+      <div class="exercise-header">
+        <span class="exercise-badge">Ejercicio 8</span>
+        <h2 class="exercise-title">Búsqueda Bidireccional</h2>
+        <span class="exercise-points">10 Puntos</span>
+      </div>
+
+      <p class="exercise-description">
+        La búsqueda bidireccional divide el problema ejecutando dos búsquedas simultáneas: una hacia adelante desde el estado inicial y otra hacia atrás desde la meta. Determina sus características:
+      </p>
+
+      <div class="matching-grid">
+        <div class="matching-row">
+          <div class="matching-label">
+            <strong>1. Mecanismo de Operación:</strong>
+            <span class="matching-sub">¿Cómo avanza el algoritmo hacia la solución?</span>
+          </div>
+          <div class="matching-control">
+            <select data-ex="ej8_busqueda_bidireccional" data-key="mecanismo_operacion">
+              <option value="" disabled selected>-- Selecciona mecanismo --</option>
+              <option value="busqueda_paralela_cpu">Dos hilos buscando en dos problemas independientes</option>
+              <option value="busqueda_ida_y_vuelta">Llega hasta el final y regresa verificando pasos</option>
+              <option value="dos_busquedas_simultaneas">Dos búsquedas simultáneas (hacia adelante desde el inicio y hacia atrás desde la meta)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="matching-row">
+          <div class="matching-label">
+            <strong>2. Condición de Parada / Criterio de Éxito:</strong>
+            <span class="matching-sub">¿En qué momento exacto se detiene el proceso y se ensambla la solución?</span>
+          </div>
+          <div class="matching-control">
+            <select data-ex="ej8_busqueda_bidireccional" data-key="condicion_parada">
+              <option value="" disabled selected>-- Selecciona criterio --</option>
+              <option value="llegar_al_nodo_raiz">Cuando ambas búsquedas alcanzan el estado inicial</option>
+              <option value="agotar_tiempo_cpu">Cuando se agota el tiempo máximo de reloj de CPU</option>
+              <option value="interseccion_de_fronteras">Cuando se produce la intersección de fronteras (un nodo generado ya pertenece a la otra frontera)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="matching-row">
+          <div class="matching-label">
+            <strong>3. Reducción Asintótica de la Complejidad Temporal:</strong>
+            <span class="matching-sub">¿A qué orden reduce la cota $O(b^d)$ tradicional de BFS?</span>
+          </div>
+          <div class="matching-control">
+            <select data-ex="ej8_busqueda_bidireccional" data-key="reduccion_complejidad">
+              <option value="" disabled selected>-- Selecciona reducción --</option>
+              <option value="o_b_por_d">De O(bᵈ) a O(b &middot; d)</option>
+              <option value="o_log_d">De O(bᵈ) a O(log d)</option>
+              <option value="o_b_a_la_d_sobre_dos">De O(bᵈ) a O(b^(d/2))</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="matching-row">
+          <div class="matching-label">
+            <strong>4. Desafíos Críticos de Implementación:</strong>
+            <span class="matching-sub">¿Cuáles son las mayores dificultades prácticas para aplicar búsqueda bidireccional?</span>
+          </div>
+          <div class="matching-control">
+            <select data-ex="ej8_busqueda_bidireccional" data-key="desafio_principal">
+              <option value="" disabled selected>-- Selecciona desafío --</option>
+              <option value="falta_de_lenguajes">Falta de librerías para punteros dobles en lenguajes modernos</option>
+              <option value="calculo_predecesores_memoria">Calcular predecesores / operadores inversos y retener al menos una frontera en memoria O(b^(d/2))</option>
+              <option value="incompatibilidad_matematica">Incompatibilidad matemática cuando b &gt; 2</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <details class="biblio-hint">
+        <summary>📖 Dónde estudiar este tema en la bibliografía</summary>
+        <div class="biblio-content">
+          <strong>Russell &amp; Norvig (Cap. 3.4.6 pp. 90-92):</strong> "Búsqueda bidireccional". Reducción exponencial a $O(b^{d/2})$, cálculo de predecesores y test de pertenencia hash en la frontera.<br>
+          <strong>Presentación Clase 3.2:</strong> Diapositivas 65 a 75 ("5. Búsqueda bidireccional y comparación con BFS").
+        </div>
+      </details>
+    </article>
+
+    <!-- Ejercicio 9 -->
+    <article class="exercise-card" id="ej9">
+      <div class="exercise-header">
+        <span class="exercise-badge">Ejercicio 9</span>
+        <h2 class="exercise-title">Matriz Maestra de Comparación de Estrategias a Ciegas</h2>
+        <span class="exercise-points">10 Puntos</span>
+      </div>
+
+      <p class="exercise-description">
+        Completa las celdas clave de la matriz comparativa canónica de Russell &amp; Norvig (Tabla 3.17 y Slide 76) para las estrategias de búsqueda no informada, considerando un factor de ramificación $b$, profundidad de solución más superficial $d$ y profundidad máxima $m$:
+      </p>
+
+      <div class="table-responsive">
+        <table class="academic-table">
+          <thead>
+            <tr>
+              <th>Estrategia</th>
+              <th>¿Completo?</th>
+              <th>Tiempo</th>
+              <th>Espacio</th>
+              <th>¿Óptimo?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Primero en Anchura (BFS)</strong></td>
+              <td>
+                <select data-ex="ej9_matriz_comparativa_estrategias" data-key="bfs_completitud">
+                  <option value="" disabled selected>-- Selecciona --</option>
+                  <option value="no">No</option>
+                  <option value="si_b_finito">Sí (si b es finito)</option>
+                  <option value="si_siempre">Sí (siempre)</option>
+                </select>
+              </td>
+              <td>
+                <select data-ex="ej9_matriz_comparativa_estrategias" data-key="bfs_tiempo">
+                  <option value="" disabled selected>-- Selecciona --</option>
+                  <option value="o_b_m">O(b &middot; m)</option>
+                  <option value="o_b_d">O(bᵈ)</option>
+                  <option value="o_b_a_la_m">O(bᵐ)</option>
+                </select>
+              </td>
+              <td>
+                <select data-ex="ej9_matriz_comparativa_estrategias" data-key="bfs_espacio">
+                  <option value="" disabled selected>-- Selecciona --</option>
+                  <option value="o_b_d">O(bᵈ)</option>
+                  <option value="o_b_por_d">O(b &middot; d)</option>
+                  <option value="o_1">O(1)</option>
+                </select>
+              </td>
+              <td>
+                <select data-ex="ej9_matriz_comparativa_estrategias" data-key="bfs_optimalidad">
+                  <option value="" disabled selected>-- Selecciona --</option>
+                  <option value="no">No</option>
+                  <option value="si_costos_iguales">Sí (si costos de paso son idénticos)</option>
+                  <option value="si_siempre">Sí (siempre)</option>
+                </select>
+              </td>
+            </tr>
+
+            <tr>
+              <td><strong>Costo Uniforme (UCS)</strong></td>
+              <td><span class="static-val">Sí (si c &ge; &epsilon; &gt; 0)</span></td>
+              <td><span class="static-val">O(b^(1 + &lfloor;C*/&epsilon;&rfloor))</span></td>
+              <td><span class="static-val">O(b^(1 + &lfloor;C*/&epsilon;&rfloor))</span></td>
+              <td>
+                <select data-ex="ej9_matriz_comparativa_estrategias" data-key="ucs_optimalidad">
+                  <option value="" disabled selected>-- Selecciona --</option>
+                  <option value="no">No</option>
+                  <option value="si_costos_iguales">Solo si costos son iguales</option>
+                  <option value="si_siempre">Sí (siempre con c &ge; &epsilon; &gt; 0)</option>
+                </select>
+              </td>
+            </tr>
+
+            <tr>
+              <td><strong>Primero en Profundidad (DFS)</strong></td>
+              <td><span class="static-val">No (en árboles)</span></td>
+              <td><span class="static-val">O(bᵐ)</span></td>
+              <td>
+                <select data-ex="ej9_matriz_comparativa_estrategias" data-key="dfs_espacio">
+                  <option value="" disabled selected>-- Selecciona --</option>
+                  <option value="o_b_m">O(b &middot; m) - Lineal</option>
+                  <option value="o_b_d">O(bᵈ) - Exponencial</option>
+                  <option value="o_b_a_la_m">O(bᵐ) - Exponencial</option>
+                </select>
+              </td>
+              <td><span class="static-val">No</span></td>
+            </tr>
+
+            <tr>
+              <td><strong>Profundidad Iterativa (IDDFS)</strong></td>
+              <td><span class="static-val">Sí (si b finito)</span></td>
+              <td><span class="static-val">O(bᵈ)</span></td>
+              <td>
+                <select data-ex="ej9_matriz_comparativa_estrategias" data-key="iddfs_espacio">
+                  <option value="" disabled selected>-- Selecciona --</option>
+                  <option value="o_b_d">O(b &middot; d) - Lineal</option>
+                  <option value="o_b_a_la_d">O(bᵈ) - Exponencial</option>
+                  <option value="o_b_m">O(b &middot; m)</option>
+                </select>
+              </td>
+              <td>
+                <select data-ex="ej9_matriz_comparativa_estrategias" data-key="iddfs_optimalidad">
+                  <option value="" disabled selected>-- Selecciona --</option>
+                  <option value="no">No</option>
+                  <option value="si_costos_iguales">Sí (si costos de paso son idénticos)</option>
+                  <option value="si_siempre">Sí (siempre)</option>
+                </select>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <details class="biblio-hint">
+        <summary>📖 Dónde estudiar este tema en la bibliografía</summary>
+        <div class="biblio-content">
+          <strong>Russell &amp; Norvig (Cap. 3.4.7 p. 93):</strong> Tabla 3.17 "Evaluación de las estrategias de búsqueda".<br>
+          <strong>Presentación Clase 3.2:</strong> Diapositiva 76 ("Comparación de las estrategias de búsqueda").
+        </div>
+      </details>
+    </article>
+
+    <!-- Ejercicio 10 -->
+    <article class="exercise-card" id="ej10">
+      <div class="exercise-header">
+        <span class="exercise-badge">Ejercicio 10</span>
+        <h2 class="exercise-title">Prevención de Estados Repetidos: Búsqueda en Árboles vs. Grafos</h2>
+        <span class="exercise-points">10 Puntos</span>
+      </div>
+
+      <p class="exercise-description">
+        La diapositiva 80 cita la máxima: <em>"Los algoritmos que olvidan su historia están condenados a repetirla"</em>. En espacios de estados con múltiples caminos redundantes o ciclos, examina las implicancias teóricas de la Búsqueda en Grafos frente a la Búsqueda en Árboles:
+      </p>
+
+      <div class="matching-grid">
+        <div class="matching-row">
+          <div class="matching-label">
+            <strong>1. ¿Qué consecuencia tiene 'olvidar la historia' en espacios con ciclos?</strong>
+            <span class="matching-sub">Impacto en el tamaño del árbol y tiempo de ejecución.</span>
+          </div>
+          <div class="matching-control">
+            <select data-ex="ej10_prevencion_estados_repetidos" data-key="consecuencia_olvidar_historia">
+              <option value="" disabled selected>-- Selecciona consecuencia teórica --</option>
+              <option value="mejora_velocidad">Mejora sustancial de la velocidad al no consultar listas anteriores</option>
+              <option value="reduccion_espacio">Garantía de hallar el camino óptimo sin usar memoria</option>
+              <option value="explosion_combinatoria_ciclos">Explosión combinatoria y loops infinitos al explorar repetidamente los mismos estados</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="matching-row">
+          <div class="matching-label">
+            <strong>2. Estructura Adicional en la Búsqueda en Grafos:</strong>
+            <span class="matching-sub">¿Qué estructura de datos incorpora el algoritmo de búsqueda en grafos respecto al de árboles?</span>
+          </div>
+          <div class="matching-control">
+            <select data-ex="ej10_prevencion_estados_repetidos" data-key="estructura_busqueda_grafos">
+              <option value="" disabled selected>-- Selecciona estructura --</option>
+              <option value="pila_temporal">Una pila temporal descartable cada 10 iteraciones</option>
+              <option value="archivo_disco">Un archivo de log en texto plano en disco</option>
+              <option value="lista_cerrada_explorados">Un conjunto de explorados (lista cerrada / explored set) para registrar estados ya expandidos</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="matching-row">
+          <div class="matching-label">
+            <strong>3. Costo y Compromiso (Trade-off) de la Búsqueda en Grafos:</strong>
+            <span class="matching-sub">¿Cuál es el principal inconveniente de retener la lista cerrada de explorados?</span>
+          </div>
+          <div class="matching-control">
+            <select data-ex="ej10_prevencion_estados_repetidos" data-key="costo_busqueda_grafos">
+              <option value="" disabled selected>-- Selecciona trade-off --</option>
+              <option value="sin_impacto_memoria">Cero impacto porque los estados se comprimen automáticamente</option>
+              <option value="incompatibilidad_cpu">Incompatibilidad con procesadores multi-núcleo</option>
+              <option value="memoria_todos_estados_explorados">Requiere retener todos los estados explorados en memoria, anulando la ventaja de memoria lineal de DFS</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <details class="biblio-hint">
+        <summary>📖 Dónde estudiar este tema en la bibliografía</summary>
+        <div class="biblio-content">
+          <strong>Russell &amp; Norvig (Cap. 3.5 pp. 93-96):</strong> "Búsqueda en grafos". El conjunto de explorados (`explored set`), eliminación de caminos redundantes y el costo en memoria de almacenar todos los estados visitados.<br>
+          <strong>Presentación Clase 3.2:</strong> Diapositivas 77 a 80 ("Evitar estados repetidos y la historia").
+        </div>
+      </details>
+    </article>
+
+    <!-- TARJETA FINAL DE EXPORTACIÓN Y CONTROL -->
+    <section class="export-card">
+      <div class="export-header">
+        <h2 class="export-title">📥 Entrega y Exportación de Respuestas</h2>
+        <p class="export-desc">
+          Verifica que tu progreso haya alcanzado el 100%. Luego genera tu archivo oficial <code>respuestas_tp2.json</code> para someterlo al evaluador local y subirlo a tu repositorio de GitHub.
+        </p>
+      </div>
+
+      <div class="export-actions">
+        <button id="btn-export-bottom" class="btn btn-primary btn-large">
+          📥 Generar y Descargar respuestas_tp2.json
+        </button>
+        <button id="btn-toggle-preview" class="btn btn-secondary">
+          👁️ Previsualizar JSON en Pantalla
+        </button>
+        <button id="btn-copy-json" class="btn btn-secondary">
+          📋 Copiar JSON al Portapapeles
+        </button>
+      </div>
+
+      <!-- Contenedor Colapsable de Previsualización -->
+      <div id="json-preview-container" class="json-preview-container" style="display: none;">
+        <div class="preview-header">
+          <span>Vista previa en vivo de <code>respuestas_tp2.json</code>:</span>
+        </div>
+        <pre><code id="json-preview-code">{}</code></pre>
+      </div>
+
+      <!-- Zona de Restauración / Importación -->
+      <div class="import-section">
+        <span>¿Necesitas retomar una entrega previa?</span>
+        <label for="import-json-file" class="btn-link">Cargar archivo respuestas_tp2.json previo</label>
+        <input type="file" id="import-json-file" accept=".json" style="display: none;">
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="main-footer">
+    <p>&copy; 2026 Universidad Católica de Santiago del Estero (UCSE) &bull; DASS</p>
+    <p>Cátedra de Laboratorio I &bull; Docente: Ing. Fabio D. Argañaraz &bull; Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
