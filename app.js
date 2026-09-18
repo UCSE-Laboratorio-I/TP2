@@ -315,15 +315,8 @@ function setVal(id, val) {
 // ==================== CÁLCULO DE PROGRESO ====================
 
 function updateProgress() {
-  const totalItems = 43; // Cantidad total de campos requeridos (5 de estudiante + 38 items)
+  const totalItems = 43; // Cantidad total de consignas/preguntas en los ejercicios
   let completed = 0;
-
-  // Estudiante (5)
-  if (state.student.name) completed++;
-  if (state.student.dni) completed++;
-  if (state.student.email) completed++;
-  if (state.student.comision) completed++;
-  if (state.student.github_user) completed++;
 
   // Ejercicios
   for (const ex in state.answers) {
