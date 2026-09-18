@@ -26,7 +26,7 @@ Al completar este Trabajo Práctico, el estudiante será capaz de:
 
 ## 📚 Mapa Bibliográfico Obligatorio
 
-| Ejercicio | Tema Principal | Capítulo Russell & Norvig (AIMA 2da/3ra Ed.) | Diapositivas de Cátedra |
+| Ejercicio | Tema Principal | Capítulo [Russell & Norvig (AIMA 2da/3ra Ed.)](http://jdelagarza.fime.uanl.mx/IA/Libros/inteligencia-artificial-un-enfoque-moderno-stuart-j-russell.pdf) | Diapositivas de Cátedra |
 |---|---|---|---|
 | **Ej 1** | Formulación Formal de Problemas | Cap. 3.1 (*Problemas y soluciones bien definidas*, pp. 64-69) | Slide 4 a 15 (*Formulación del objetivo y problema*) |
 | **Ej 2** | Nodo de Búsqueda vs. Estado del Mundo | Cap. 3.3 (*Búsqueda de soluciones / Nodos y estados*, pp. 74-76) | Slide 37, 42-43 (*Representación de un nodo*) |

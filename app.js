@@ -46,12 +46,14 @@ document.addEventListener('DOMContentLoaded', () => {
 function initTheme() {
   const saved = localStorage.getItem('LAB1_THEME') || 'dark';
   document.documentElement.setAttribute('data-theme', saved);
+  document.documentElement.classList.toggle('dark', saved === 'dark');
   const toggleBtn = document.getElementById('theme-toggle-btn');
   if (toggleBtn) {
     toggleBtn.addEventListener('click', () => {
       const cur = document.documentElement.getAttribute('data-theme');
       const next = cur === 'dark' ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', next);
+      document.documentElement.classList.toggle('dark', next === 'dark');
       localStorage.setItem('LAB1_THEME', next);
     });
   }
@@ -182,6 +184,24 @@ function bindEvents() {
       reader.readAsText(file);
     });
   }
+
+  // 7. Modales de Asistencia
+  setupModal('btn-open-biblio-all', 'modal-biblio');
+  setupModal('btn-git-guide', 'modal-git');
+}
+
+function setupModal(btnId, modalId) {
+  const btn = document.getElementById(btnId);
+  const modal = document.getElementById(modalId);
+  if (!btn || !modal) return;
+  btn.addEventListener('click', () => modal.classList.add('open'));
+  modal.querySelectorAll('.modal-close, .modal-overlay').forEach(el => {
+    el.addEventListener('click', (e) => {
+      if (e.target === modal || e.target.classList.contains('modal-close')) {
+        modal.classList.remove('open');
+      }
+    });
+  });
 }
 
 // ==================== GENERACIÓN DE PAYLOAD Y EXPORTACIÓN ====================
