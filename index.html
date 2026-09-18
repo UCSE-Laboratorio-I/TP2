@@ -324,7 +324,7 @@
             <select data-ex="ej3_espacios_estados_juguete" data-key="aspiradora_total_estados" class="w-full bg-slate-800 text-slate-100 border border-slate-700 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all shadow-sm cursor-pointer hover:border-slate-600">
               <option value="" disabled selected>-- Selecciona cantidad de estados --</option>
               <option value="4_estados">4 estados discretos</option>
-              <option value="8_estados">8 estados discretos (2 posiciones &times; 2&sup2; combinaciones de suciedad)</option>
+              <option value="8_estados">8 estados discretos (2 posiciones × 2² combinaciones de suciedad)</option>
               <option value="16_estados">16 estados discretos</option>
             </select>
           </div>
@@ -369,8 +369,8 @@
             <select data-ex="ej3_espacios_estados_juguete" data-key="reinas8_espacio_restringido" class="w-full bg-slate-800 text-slate-100 border border-slate-700 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all shadow-sm cursor-pointer hover:border-slate-600">
               <option value="" disabled selected>-- Selecciona tamaño del espacio --</option>
               <option value="64_estados">64 estados posibles</option>
-              <option value="4400000000_estados">Aprox. 4,4 &times; 10&sup9; estados (sin restricción de columna)</option>
-              <option value="16777216_estados">8&sup8; = 16.777.216 estados (1 reina por columna en fila 1 a 8)</option>
+              <option value="4400000000_estados">Aprox. 4,4 × 10⁹ estados (sin restricción de columna)</option>
+              <option value="16777216_estados">8⁸ = 16.777.216 estados (1 reina por columna en fila 1 a 8)</option>
             </select>
           </div>
         </div>
@@ -440,7 +440,7 @@
             <select data-ex="ej4_busqueda_primero_anchura" data-key="criterio_optimalidad" class="w-full bg-slate-800 text-slate-100 border border-slate-700 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all shadow-sm cursor-pointer hover:border-slate-600">
               <option value="" disabled selected>-- Selecciona condición --</option>
               <option value="siempre_optima_cualquier_costo">Óptima siempre, independientemente de los costos de los arcos</option>
-              <option value="optimo_costo_uniforme_paso">Óptimo si todos los costos de paso son idénticos (costo constante c &gt; 0)</option>
+              <option value="optimo_costo_uniforme_paso">Óptimo si todos los costos de paso son idénticos (costo constante c > 0)</option>
               <option value="nunca_optima">Nunca es óptima</option>
             </select>
           </div>
@@ -454,7 +454,7 @@
           <div class="sm:w-80 md:w-96">
             <select data-ex="ej4_busqueda_primero_anchura" data-key="complejidad_espacial" class="w-full bg-slate-800 text-slate-100 border border-slate-700 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all shadow-sm cursor-pointer hover:border-slate-600">
               <option value="" disabled selected>-- Selecciona complejidad --</option>
-              <option value="o_b_por_d">O(b &middot; d) - Espacio lineal</option>
+              <option value="o_b_por_d">O(b · d) - Espacio lineal</option>
               <option value="o_1">O(1) - Espacio constante</option>
               <option value="o_b_a_la_d">O(bᵈ) - Espacio exponencial (debe retener todos los nodos en la frontera)</option>
             </select>
@@ -526,7 +526,7 @@
             <select data-ex="ej5_busqueda_costo_uniforme" data-key="condicion_optimalidad" class="w-full bg-slate-800 text-slate-100 border border-slate-700 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all shadow-sm cursor-pointer hover:border-slate-600">
               <option value="" disabled selected>-- Selecciona restricción --</option>
               <option value="heuristica_admisible">Debe contar con una función heurística consistente</option>
-              <option value="costo_paso_mayor_cero">Cada costo de paso debe ser estrictamente positivo (c &ge; &epsilon; &gt; 0)</option>
+              <option value="costo_paso_mayor_cero">Cada costo de paso debe ser estrictamente positivo (c ≥ ε > 0)</option>
               <option value="grafo_sin_ciclos">El grafo no puede tener ningún ciclo</option>
             </select>
           </div>
@@ -541,8 +541,8 @@
             <select data-ex="ej5_busqueda_costo_uniforme" data-key="complejidad_tiempo_espacio" class="w-full bg-slate-800 text-slate-100 border border-slate-700 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all shadow-sm cursor-pointer hover:border-slate-600">
               <option value="" disabled selected>-- Selecciona complejidad --</option>
               <option value="o_b_a_la_d">O(bᵈ) guiada únicamente por la profundidad d</option>
-              <option value="o_b_por_m">O(b &middot; m) espacio lineal</option>
-              <option value="o_b_exponente_costo_optimo">O(b^(1 + &lfloor;C*/&epsilon;&rfloor)) guiada por el costo óptimo C*</option>
+              <option value="o_b_por_m">O(b · m) espacio lineal</option>
+              <option value="o_b_exponente_costo_optimo">O(b^(1 + ⌊C*/ε⌋)) guiada por el costo óptimo C*</option>
             </select>
           </div>
         </div>
@@ -597,7 +597,7 @@
             <select data-ex="ej6_busqueda_primero_profundidad" data-key="ventaja_principal" class="w-full bg-slate-800 text-slate-100 border border-slate-700 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all shadow-sm cursor-pointer hover:border-slate-600">
               <option value="" disabled selected>-- Selecciona ventaja --</option>
               <option value="optimalidad_garantizada">Garantiza encontrar siempre el camino óptimo</option>
-              <option value="memoria_lineal_o_b_m">Requisitos de memoria extremadamente modestos: espacio lineal O(b &middot; m)</option>
+              <option value="memoria_lineal_o_b_m">Requisitos de memoria extremadamente modestos: espacio lineal O(b · m)</option>
               <option value="tiempo_minimo">Tiempo de ejecución independiente de la profundidad</option>
             </select>
           </div>
@@ -682,7 +682,7 @@
           <div class="sm:w-80 md:w-96">
             <select data-ex="ej7_profundidad_limitada_iterativa" data-key="iddfs_estrategia" class="w-full bg-slate-800 text-slate-100 border border-slate-700 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all shadow-sm cursor-pointer hover:border-slate-600">
               <option value="" disabled selected>-- Selecciona estrategia --</option>
-              <option value="reduce_limite_progresivamente">Empieza en l = &infin; y va decrementando</option>
+              <option value="reduce_limite_progresivamente">Empieza en l = ∞ y va decrementando</option>
               <option value="elige_limites_aleatorios">Prueba valores aleatorios mediante búsqueda estocástica</option>
               <option value="incrementa_limite_progresivamente">Incrementa el límite progresivamente (l = 0, 1, 2, ...)</option>
             </select>
@@ -783,7 +783,7 @@
           <div class="sm:w-80 md:w-96">
             <select data-ex="ej8_busqueda_bidireccional" data-key="reduccion_complejidad" class="w-full bg-slate-800 text-slate-100 border border-slate-700 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all shadow-sm cursor-pointer hover:border-slate-600">
               <option value="" disabled selected>-- Selecciona explicación --</option>
-              <option value="reduccion_mitad_exponente">Dividir el exponente por dos transforma por ejemplo <i>b</i><sup>10</sup> en 2 &middot; <i>b</i><sup>5</sup>, ahorrando órdenes de magnitud</option>
+              <option value="reduccion_mitad_exponente">Dividir el exponente por dos transforma por ejemplo b¹⁰ en 2 · b⁵, ahorrando órdenes de magnitud</option>
               <option value="reduce_linealmente">Es solo el doble de rápida que BFS estándar</option>
               <option value="no_reduce_tiempo">No reduce tiempo, solo optimiza la memoria</option>
             </select>
@@ -855,7 +855,7 @@
               <td class="px-4 py-3">
                 <select data-ex="ej9_matriz_comparativa_estrategias" data-key="bfs_tiempo" class="w-full bg-slate-800 text-slate-100 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs focus:ring-2 focus:ring-sky-500 focus:outline-none cursor-pointer">
                   <option value="" disabled selected>-- Selecciona --</option>
-                  <option value="o_b_por_d">O(b &middot; d)</option>
+                  <option value="o_b_por_d">O(b · d)</option>
                   <option value="o_b_d">O(bᵈ)</option>
                   <option value="o_b_a_la_m">O(bᵐ)</option>
                 </select>
@@ -864,7 +864,7 @@
                 <select data-ex="ej9_matriz_comparativa_estrategias" data-key="bfs_espacio" class="w-full bg-slate-800 text-slate-100 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs focus:ring-2 focus:ring-sky-500 focus:outline-none cursor-pointer">
                   <option value="" disabled selected>-- Selecciona --</option>
                   <option value="o_b_d">O(bᵈ)</option>
-                  <option value="o_b_por_d">O(b &middot; d)</option>
+                  <option value="o_b_por_d">O(b · d)</option>
                   <option value="o_1">O(1)</option>
                 </select>
               </td>
@@ -888,7 +888,7 @@
                   <option value="" disabled selected>-- Selecciona --</option>
                   <option value="no">No</option>
                   <option value="si_costos_iguales">Solo si costos son iguales</option>
-                  <option value="si_siempre">Sí (siempre con c &ge; &epsilon; &gt; 0)</option>
+                  <option value="si_siempre">Sí (siempre con c ≥ ε > 0)</option>
                 </select>
               </td>
             </tr>
@@ -900,7 +900,7 @@
               <td class="px-4 py-3">
                 <select data-ex="ej9_matriz_comparativa_estrategias" data-key="dfs_espacio" class="w-full bg-slate-800 text-slate-100 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs focus:ring-2 focus:ring-sky-500 focus:outline-none cursor-pointer">
                   <option value="" disabled selected>-- Selecciona --</option>
-                  <option value="o_b_m">O(b &middot; m) - Lineal</option>
+                  <option value="o_b_m">O(b · m) - Lineal</option>
                   <option value="o_b_d">O(bᵈ) - Exponencial</option>
                   <option value="o_b_a_la_m">O(bᵐ) - Exponencial</option>
                 </select>
@@ -915,9 +915,9 @@
               <td class="px-4 py-3">
                 <select data-ex="ej9_matriz_comparativa_estrategias" data-key="iddfs_espacio" class="w-full bg-slate-800 text-slate-100 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs focus:ring-2 focus:ring-sky-500 focus:outline-none cursor-pointer">
                   <option value="" disabled selected>-- Selecciona --</option>
-                  <option value="o_b_d">O(b &middot; d) - Lineal</option>
+                  <option value="o_b_d">O(b · d) - Lineal</option>
                   <option value="o_b_a_la_d">O(bᵈ) - Exponencial</option>
-                  <option value="o_b_m">O(b &middot; m)</option>
+                  <option value="o_b_m">O(b · m)</option>
                 </select>
               </td>
               <td class="px-4 py-3">
