@@ -145,7 +145,7 @@
       <div class="space-y-3.5">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-slate-950/50 rounded-xl border border-slate-800/80 hover:border-slate-700/80 transition-all gap-3.5">
           <div class="sm:max-w-md">
-            <strong class="font-semibold text-sky-400 text-sm block">1. Estado Inicial ($S_0$):</strong>
+            <strong class="font-semibold text-sky-400 text-sm block">1. Estado Inicial (<i>S</i><sub>0</sub>):</strong>
             <span class="text-xs text-slate-400 mt-0.5 block leading-normal">Punto de partida formal del agente en el espacio de estados.</span>
           </div>
           <div class="sm:w-80 md:w-96">
@@ -161,7 +161,7 @@
         <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-slate-950/50 rounded-xl border border-slate-800/80 hover:border-slate-700/80 transition-all gap-3.5">
           <div class="sm:max-w-md">
             <strong class="font-semibold text-sky-400 text-sm block">2. Acciones / Función Sucesor:</strong>
-            <span class="text-xs text-slate-400 mt-0.5 block leading-normal">Conjunto de operadores legales aplicables a cada estado $s$.</span>
+            <span class="text-xs text-slate-400 mt-0.5 block leading-normal">Conjunto de operadores legales aplicables a cada estado <i>s</i>.</span>
           </div>
           <div class="sm:w-80 md:w-96">
             <select data-ex="ej1_formulacion_problema" data-key="acciones_sucesores" class="w-full bg-slate-800 text-slate-100 border border-slate-700 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all shadow-sm cursor-pointer hover:border-slate-600">
@@ -190,7 +190,7 @@
 
         <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-slate-950/50 rounded-xl border border-slate-800/80 hover:border-slate-700/80 transition-all gap-3.5">
           <div class="sm:max-w-md">
-            <strong class="font-semibold text-sky-400 text-sm block">4. Costo del Camino ($g$):</strong>
+            <strong class="font-semibold text-sky-400 text-sm block">4. Costo del Camino (<i>g</i>):</strong>
             <span class="text-xs text-slate-400 mt-0.5 block leading-normal">Función que asigna un costo numérico a la trayectoria transitada.</span>
           </div>
           <div class="sm:w-80 md:w-96">
@@ -276,7 +276,7 @@
 
         <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-slate-950/50 rounded-xl border border-slate-800/80 hover:border-slate-700/80 transition-all gap-3.5">
           <div class="sm:max-w-md">
-            <strong class="font-semibold text-sky-400 text-sm block">4. Costo Acumulado del Camino ($g(n)$):</strong>
+            <strong class="font-semibold text-sky-400 text-sm block">4. Costo Acumulado del Camino (<i>g</i>(<i>n</i>)):</strong>
             <span class="text-xs text-slate-400 mt-0.5 block leading-normal">¿Quién almacena la suma de costos desde la raíz hasta el punto actual?</span>
           </div>
           <div class="sm:w-80 md:w-96">
@@ -332,7 +332,7 @@
 
         <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-slate-950/50 rounded-xl border border-slate-800/80 hover:border-slate-700/80 transition-all gap-3.5">
           <div class="sm:max-w-md">
-            <strong class="font-semibold text-sky-400 text-sm block">2. 8-Puzzle (Permutaciones Totales del Tablero $3 \times 3$):</strong>
+            <strong class="font-semibold text-sky-400 text-sm block">2. 8-Puzzle (Permutaciones Totales del Tablero 3 &times; 3):</strong>
             <span class="text-xs text-slate-400 mt-0.5 block leading-normal">¿Cuántas combinaciones matemáticas puras existen para las 8 fichas y el espacio vacío?</span>
           </div>
           <div class="sm:w-80 md:w-96">
@@ -449,7 +449,7 @@
         <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-slate-950/50 rounded-xl border border-slate-800/80 hover:border-slate-700/80 transition-all gap-3.5">
           <div class="sm:max-w-md">
             <strong class="font-semibold text-sky-400 text-sm block">4. Complejidad Espacial (Memoria):</strong>
-            <span class="text-xs text-slate-400 mt-0.5 block leading-normal">¿Cuál es la función asintótica de consumo de memoria en términos de $b$ y $d$?</span>
+            <span class="text-xs text-slate-400 mt-0.5 block leading-normal">¿Cuál es la función asintótica de consumo de memoria en términos de <i>b</i> y <i>d</i>?</span>
           </div>
           <div class="sm:w-80 md:w-96">
             <select data-ex="ej4_busqueda_primero_anchura" data-key="complejidad_espacial" class="w-full bg-slate-800 text-slate-100 border border-slate-700 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all shadow-sm cursor-pointer hover:border-slate-600">
@@ -483,7 +483,7 @@
       </div>
 
       <p class="text-slate-300 text-sm leading-relaxed mb-6">
-        En lugar de expandir el nodo más superficial, la búsqueda de costo uniforme expande el nodo con el costo de camino acumulado $g(n)$ más bajo. Responde a las directivas críticas de su implementación:
+        En lugar de expandir el nodo más superficial, la búsqueda de costo uniforme expande el nodo con el costo de camino acumulado <i>g</i>(<i>n</i>) más bajo. Responde a las directivas críticas de su implementación:
       </p>
 
       <div class="space-y-3.5">
@@ -535,7 +535,7 @@
         <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-slate-950/50 rounded-xl border border-slate-800/80 hover:border-slate-700/80 transition-all gap-3.5">
           <div class="sm:max-w-md">
             <strong class="font-semibold text-sky-400 text-sm block">4. Complejidad Asintótica Guiada por Costo:</strong>
-            <span class="text-xs text-slate-400 mt-0.5 block leading-normal">¿Cuál es la fórmula de complejidad temporal/espacial en función del costo óptimo $C^*$ y &epsilon;?</span>
+            <span class="text-xs text-slate-400 mt-0.5 block leading-normal">¿Cuál es la fórmula de complejidad temporal/espacial en función del costo óptimo <i>C</i>* y &epsilon;?</span>
           </div>
           <div class="sm:w-80 md:w-96">
             <select data-ex="ej5_busqueda_costo_uniforme" data-key="complejidad_tiempo_espacio" class="w-full bg-slate-800 text-slate-100 border border-slate-700 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all shadow-sm cursor-pointer hover:border-slate-600">
@@ -640,7 +640,7 @@
           <span class="transition-transform group-open:rotate-180">▾</span>
         </summary>
         <div class="mt-3 pt-3 border-t border-amber-500/20 text-slate-300 space-y-1 leading-relaxed">
-          <p><strong><a href="http://jdelagarza.fime.uanl.mx/IA/Libros/inteligencia-artificial-un-enfoque-moderno-stuart-j-russell.pdf" target="_blank" rel="noopener noreferrer" class="underline hover:text-amber-300">Russell &amp; Norvig</a> (Cap. 3.4.3 pp. 84-87):</strong> "Búsqueda primero en profundidad". Pila LIFO, complejidad espacial lineal $O(bm)$, incompletitud y falta de optimalidad.</p>
+          <p><strong><a href="http://jdelagarza.fime.uanl.mx/IA/Libros/inteligencia-artificial-un-enfoque-moderno-stuart-j-russell.pdf" target="_blank" rel="noopener noreferrer" class="underline hover:text-amber-300">Russell &amp; Norvig</a> (Cap. 3.4.3 pp. 84-87):</strong> "Búsqueda primero en profundidad". Pila LIFO, complejidad espacial lineal <i>O</i>(<i>b</i> &middot; <i>m</i>), incompletitud y falta de optimalidad.</p>
           <p><strong>Presentación Clase 3.2:</strong> Diapositivas 55 a 58 ("3. Búsqueda primero en profundidad y su inconveniente").</p>
         </div>
       </details>
@@ -662,7 +662,7 @@
         <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-slate-950/50 rounded-xl border border-slate-800/80 hover:border-slate-700/80 transition-all gap-3.5">
           <div class="sm:max-w-md">
             <strong class="font-semibold text-sky-400 text-sm block">1. Vulnerabilidad de DLS con Límite Inadecuado:</strong>
-            <span class="text-xs text-slate-400 mt-0.5 block leading-normal">¿Qué ocurre si fijamos un límite $l$ estrictamente menor que la profundidad $d$ de la solución más superficial ($l &lt; d$)?</span>
+            <span class="text-xs text-slate-400 mt-0.5 block leading-normal">¿Qué ocurre si fijamos un límite <i>l</i> estrictamente menor que la profundidad <i>d</i> de la solución más superficial (<i>l</i> &lt; <i>d</i>)?</span>
           </div>
           <div class="sm:w-80 md:w-96">
             <select data-ex="ej7_profundidad_limitada_iterativa" data-key="dls_limite_inadecuado" class="w-full bg-slate-800 text-slate-100 border border-slate-700 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all shadow-sm cursor-pointer hover:border-slate-600">
@@ -778,12 +778,12 @@
         <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-slate-950/50 rounded-xl border border-slate-800/80 hover:border-slate-700/80 transition-all gap-3.5">
           <div class="sm:max-w-md">
             <strong class="font-semibold text-sky-400 text-sm block">3. Reducción Teórica de Complejidad Temporal:</strong>
-            <span class="text-xs text-slate-400 mt-0.5 block leading-normal">¿Por qué la complejidad $O(2 \cdot b^{d/2})$ es dramáticamente menor que $O(b^d)$?</span>
+            <span class="text-xs text-slate-400 mt-0.5 block leading-normal">¿Por qué la complejidad <i>O</i>(2 &middot; <i>b</i><sup><i>d</i>/2</sup>) es dramáticamente menor que <i>O</i>(<i>b</i><sup><i>d</i></sup>)?</span>
           </div>
           <div class="sm:w-80 md:w-96">
             <select data-ex="ej8_busqueda_bidireccional" data-key="reduccion_complejidad" class="w-full bg-slate-800 text-slate-100 border border-slate-700 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all shadow-sm cursor-pointer hover:border-slate-600">
               <option value="" disabled selected>-- Selecciona explicación --</option>
-              <option value="reduccion_mitad_exponente">Dividir el exponente por dos transforma por ejemplo $b^{10}$ en $2 \cdot b^5$, ahorrando órdenes de magnitud</option>
+              <option value="reduccion_mitad_exponente">Dividir el exponente por dos transforma por ejemplo <i>b</i><sup>10</sup> en 2 &middot; <i>b</i><sup>5</sup>, ahorrando órdenes de magnitud</option>
               <option value="reduce_linealmente">Es solo el doble de rápida que BFS estándar</option>
               <option value="no_reduce_tiempo">No reduce tiempo, solo optimiza la memoria</option>
             </select>
@@ -812,7 +812,7 @@
           <span class="transition-transform group-open:rotate-180">▾</span>
         </summary>
         <div class="mt-3 pt-3 border-t border-amber-500/20 text-slate-300 space-y-1 leading-relaxed">
-          <p><strong><a href="http://jdelagarza.fime.uanl.mx/IA/Libros/inteligencia-artificial-un-enfoque-moderno-stuart-j-russell.pdf" target="_blank" rel="noopener noreferrer" class="underline hover:text-amber-300">Russell &amp; Norvig</a> (Cap. 3.4.6 pp. 90-92):</strong> "Búsqueda bidireccional". Reducción exponencial a $O(b^{d/2})$, verificación de intersección y la dificultad de calcular predecesores.</p>
+          <p><strong><a href="http://jdelagarza.fime.uanl.mx/IA/Libros/inteligencia-artificial-un-enfoque-moderno-stuart-j-russell.pdf" target="_blank" rel="noopener noreferrer" class="underline hover:text-amber-300">Russell &amp; Norvig</a> (Cap. 3.4.6 pp. 90-92):</strong> "Búsqueda bidireccional". Reducción exponencial a <i>O</i>(<i>b</i><sup><i>d</i>/2</sup>), verificación de intersección y la dificultad de calcular predecesores.</p>
           <p><strong>Presentación Clase 3.2:</strong> Diapositivas 65 a 75 ("5. Búsqueda bidireccional").</p>
         </div>
       </details>
